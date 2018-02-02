@@ -28,7 +28,14 @@ def search_everyting():
         f_csv = csv.writer(f)
         f_csv.writerow(headers)
         while i <= total_number:
-            all_articles = newsapi.get_everything(q=query,sources= source,domains=None,from_parameter=from_date,to=end_date,language=lange,sort_by='relevancy',page=i,page_size=100)
+            all_articles = newsapi.get_everything(q=query,
+                                                sources= source,
+                                                domains=None,
+                                                from_parameter=from_date,
+                                                to=end_date,language=lange,
+                                                sort_by='relevancy',
+                                                page=i,
+                                                page_size=100)
             for article in all_articles['articles']:
                 print(article)
                 f_csv.writerow([article['source']['name'],
@@ -53,7 +60,15 @@ if __name__ == '__main__':
         end_date = input("请输入截止日期")
         lange = input("请输入语言代码")
     
-        all_articles = newsapi.get_everything(q=query,sources= source,domains=None,from_parameter=from_date,to=end_date,language=lange,sort_by='relevancy',page=1,page_size=100)
+        all_articles = newsapi.get_everything(q=query,
+                                            sources= source,
+                                            domains=None,
+                                            from_parameter=from_date,
+                                            to=end_date,
+                                            language=lange,
+                                            sort_by='relevancy',
+                                            page=1,
+                                            page_size=100)
         total_number = all_articles['totalResults']//100 + 1
         search_everyting()
         s = input("执行完毕，是否退出？Q退出程序，C继续执行")
