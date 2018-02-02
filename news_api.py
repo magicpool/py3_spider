@@ -1,10 +1,9 @@
-import json
 import csv
 import time
 from newsapi import NewsApiClient
 from prettytable import PrettyTable
 
-newsapi = NewsApiClient(api_key='e022a900d2b241ce8ebea3a5f363e652')
+newsapi = NewsApiClient(api_key='YourOwnApiKey')
 page = 1
 
 
@@ -25,7 +24,7 @@ def get_media():
 def search_everyting():
     i = 1
     headers = ['name', 'author', 'title', 'url', 'urlToImage', 'publishedAt', 'description']
-    with open('stocks.csv', 'w',newline='',encoding='utf-8') as f:
+    with open('{}_records.csv'.format(query), 'w',newline='',encoding='utf-8') as f:
         f_csv = csv.writer(f)
         f_csv.writerow(headers)
         while i <= total_number:
@@ -47,12 +46,12 @@ if __name__ == '__main__':
     get_media()
     success = True
     while success is True:
-        query = '19th party congress'
+        query = input('请输入查询关键词')
         source = input("请输入信息源：")
         # input date formatted as YYYY-MM-DD
-        from_date = '2018-01-01'
-        end_date = '2018-01-30'
-        lange = 'en'
+        from_date = input("请输入起始日期")
+        end_date = input("请输入截止日期")
+        lange = input("请输入语言代码")
     
         all_articles = newsapi.get_everything(q=query,sources= source,domains=None,from_parameter=from_date,to=end_date,language=lange,sort_by='relevancy',page=1,page_size=100)
         total_number = all_articles['totalResults']//100 + 1
