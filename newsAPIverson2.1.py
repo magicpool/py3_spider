@@ -4,7 +4,7 @@ import time
 from newsapi import NewsApiClient
 from prettytable import PrettyTable
 
-newsapi = NewsApiClient(api_key='e022a900d2b241ce8ebea3a5f363e652')
+newsapi = NewsApiClient(api_key='xxxxxxx')
 pagesize = 100
 
 
