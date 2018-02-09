@@ -4,7 +4,7 @@ import time
 from newsapi import NewsApiClient
 from prettytable import PrettyTable
 
-newsapi = NewsApiClient(api_key='e022a900d2b241ce8ebea3a5f363e652')
+newsapi = NewsApiClient(api_key='xxxxxxxxxxxxxxxxxx')
 pagesize = 100
 
 
@@ -79,7 +79,7 @@ def get_media():
     print(x)
     usr_q = input("执行完毕，是否退出？Q键退出程序，其他键再次执行查询。")
     if usr_q.lower() == "q":
-        exit()
+        sys.exit()
     else:
         pargram_fuc()
 
