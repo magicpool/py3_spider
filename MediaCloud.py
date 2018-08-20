@@ -1,13 +1,11 @@
-
-# author:lzrture
+# author:MagicPool
 
 import mediacloud
-# import json
 import time
 import datetime
 import csv
 
-mc = mediacloud.api.MediaCloud('030f23d9cfc53a7f8ea4a30c6c6818a57ca34f60fd7dd5546109d7bd5b2b870a')
+mc = mediacloud.api.MediaCloud('xxxxxxx')
 id_media = ['58722749', '57078150', '34412118', '34412232', '9272347', '38379799', '34412476']
 
 q = input('请输入查询关键词（布尔格式）：')
@@ -15,7 +13,6 @@ start_date = input("输入开始日期：（例如：2018-08-01）")
 end_date = input("输入截止日期：")
 s_date = datetime.datetime.strptime(start_date,'%Y-%m-%d')
 e_date = datetime.datetime.strptime(end_date,'%Y-%m-%d')
-
 print("本程序共有7大数据集:\n"
       "1.美国主流新闻媒体\n"
       "2.美国数字媒体\n"
@@ -24,9 +21,7 @@ print("本程序共有7大数据集:\n"
       "5.全球媒体\n"
       "6.法国媒体\n"
       "7.英国媒体\n")
-
 source_usr = int(input("请输入相应数字编号:"))
-
 
 us_mainstream_media = 'tags_id_media:{}'.format(id_media[0])
 us_digital_news = 'tags_id_media:{}'.format(id_media[1])
@@ -37,14 +32,9 @@ france_news = 'tags_id_media:{}'.format(id_media[5])
 uk_news = 'tags_id_media:{}'.format(id_media[6])
 
 source_list = [us_mainstream_media,us_digital_news,india_news,russia_news,global_news,france_news,uk_news]
-
 res = mc.storyCount(q + ' AND  ' + source_list[source_usr-1],solr_filter=mc.publish_date_query(s_date,e_date))
-
-
 num = res['count']
 print("共找到文章{}篇".format(num))
-
-
 
 def get_posts():
     fetch_size = 100
@@ -73,7 +63,6 @@ def get_posts():
     return stories
 
 
-
 def save_csv(stories):
     headers = ['media_name', 'publish_date', 'title', 'url']
     with open("records.csv", 'w', newline='',encoding='utf-8')as f:
@@ -83,6 +72,7 @@ def save_csv(stories):
             f_csv.writerow([story['media_name'],story['publish_date'],story['title'],story['url']])
 
         print("done!")
+
 
 if __name__ == '__main__':
     stories = get_posts()
