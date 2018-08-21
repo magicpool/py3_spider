@@ -7,8 +7,8 @@
 ### ZH_question_style
 知乎问题爬虫
 
-### newsAPIversion2.5
-使用newsApi.org项目借口获取数据
-
 ### MediaCloud
 使用mediacloud.org项目借口获取数据
+
+### ForeiginNewsSearchV2
+使用newsApi.org项目借口获取数据
